@@ -1,27 +1,30 @@
-function fct1(){
-    const reset = document.getElementById("start");
-    const finish_line = document.getElementById("end");   
-    const walls = document.getElementById("boundary1");
-    const result = document.getElementById("status");
-
-
-    
+//var boundaries = document.getElementsByClassName("boundary");
 
 
 
-    // //
-    // if  clicked, the maze will restart, ya3ne walls wont be red//
-
-    //if maze not comleted display you  lost on result, if not you won//
-    // 
-
-
-
+document.querySelectorAll('.boundary').forEach(item => {
+    item.addEventListener("mouseover", () => {
+        item.style.backgroundColor = "red";
+        });
+    })
+  
 
 
-    
+   
+
+ 
+
+     
 
 
-}
 
-fct1();
+
+
+//getElementsByClassName returns an array of elements,
+// addEventListener exists on elements.
+//The fix would be to iterate over the result set from getElementsByClassName
+// and call addEventListener on each item:
+
+//reset.addEventListener("click", () => {
+      //   limit bterja3 nafs el  normal background color 
+      //  and it restarts the score to 0
