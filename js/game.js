@@ -4,20 +4,75 @@ window.addEventListener('load', () => {
  var statu = document.getElementById("status");
  var startLine = document.getElementById("start");
  var endLine = document.getElementById("end");
+ var stuck = document.getElementById("game");
+ //var score = document.getElementsByClassName(".boundary.exemple");
+ var scoreText;
 
+
+//if didnt hover over s game doesnt start.
+
+   
+
+    function gamestart () {
+        startLine.addEventListener("mouseover");
+    };
+
+
+
+
+
+//entered game  and cant go out or you lose
+    stuck.addEventListener("mouseleave", gameover);
+
+
+
+ //game lost fucntion
+ 
 
     boundaries.forEach((item) => {
-    (item).addEventListener("mouseover", () => {
+    (item).addEventListener("mouseover", gameover)
+    });
+
+
+
+
+    function gameover () {
+        boundaries.forEach((item) => {
         (item).style.backgroundColor = "red";
-        statu.textContent = "You Lost"   
+        statu.textContent = "You Lost" 
 
-        });
-    });
+     });
+    };
 
+    //gamewin function
     
-    endLine.addEventListener("mouseover", () => {
-        statu.textContent = "You Won"   
-    });
+    endLine.addEventListener("mouseleave", gamewon);
+    
+
+    function gamewon () {
+        stuck.removeEventListener("mouseleave", gameover);  
+        statu.textContent = "You Won" 
+    };
+
+
+
+   // endLine.addEventListener("mouseover", () => {
+    //    (item).style.backgroundColor = "red";
+    //    statu.textContent = "You Lost"  
+
+
+
+
+
+
+
+ 
+    
+    //endLine.addEventListener("mouseover", () => {
+     //   statu.textContent = "You Won"   
+   // });
+
+
 
 
     startLine.addEventListener("click", () => {
@@ -25,23 +80,38 @@ window.addEventListener('load', () => {
       boundaries.forEach((item) => {
         item.style.backgroundColor = "#eeeeee";
         statu.textContent = "Begin by moving your mouse over the 'S'";
-    });
+   });
    });
 
 
-    //let counts=setInterval(updated);
-       // let upto=1000;
-        //function updated(){
-           // var count= document.getElementById("counter");
-            //count.innerHTML=--upto;
-           // if(upto === 0) {
-           //     clearInterval(counts);
-           // }
-       // }
+
+   //var score
+   function scoresystem() {
+   scoreText = stuck.appendChild(5, 5, 'Points: 0', { font: '18px Arial', fill: '#0095DD' });
+   }
+
+   
+
+  //function addfive() {
+    //brick.kill();
+    //score += 5;
+    //scoreText.setText(`Points: ${score}`);
+    //};
+
+   
+
+
+
 
 
 
 });
+
+
+
+
+
+
 
 //getElementsByClassName returns an array of elements,
 // addEventListener exists on elements.
